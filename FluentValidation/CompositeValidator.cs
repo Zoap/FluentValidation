@@ -40,7 +40,7 @@ namespace FluentValidation
         {
             var result = Validate();
 
-            if (result.Errors.Count() > 0)
+            if (result.Errors.Count > 0)
             {
                 throw new Exception(string.Join('\n', result.Errors.Select(x => x.ErrorMessage).Distinct().ToList()));
             }
