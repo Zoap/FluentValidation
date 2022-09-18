@@ -12,7 +12,7 @@ namespace FluentValidation
             Instance = instance;
         }
 
-        protected void RegisterBaseValidator<TBase>(IValidator<TBase> validator)
+        protected void RegisterBaseValidator<TValidator>(IValidator<TValidator> validator)
         {
             // Ensure that we've registered a compatible validator. 
             if (validator.CanValidateInstancesOfType(typeof(TClass)))
@@ -21,7 +21,7 @@ namespace FluentValidation
             }
             else
             {
-                throw new NotSupportedException(string.Format("Type {0} is not a base-class or interface implemented by {1}.", typeof(TBase).Name, typeof(TClass).Name));
+                throw new NotSupportedException($"Type {typeof(TValidator).Name} is not a base-class or interface implemented by {typeof(TClass).Name}.");
             }
 
         }
