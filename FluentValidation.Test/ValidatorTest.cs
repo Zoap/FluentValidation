@@ -15,15 +15,15 @@ namespace FluentValidation.Test
         [Test]
         public void RequestValidatorTest()
         {
-            Request request = new(1, "HelloWorld"); //valid
+            IRequest request = new Request(1, "HelloWorld"); //valid
             var result = request.Validate();
             result.IsValid.Should().BeTrue();
 
-            request = new(1, ""); //invalid
+            request = new Request(1, ""); //invalid
             result = request.Validate();
             result.IsValid.Should().BeFalse();
 
-            request = new(2, "HelloWorld"); //invalid
+            request = new Request(2, "HelloWorld"); //invalid
             result = request.Validate();
             result.IsValid.Should().BeFalse();
 

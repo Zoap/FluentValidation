@@ -1,6 +1,6 @@
 ﻿namespace FluentValidation
 {
-    public interface IRequest : IId, IValue, ICustomValidator<RequestValidator>
+    public interface IRequest : IId, IValue, ICompositeValidator
     {
     }
 }
