@@ -1,10 +1,12 @@
-﻿namespace FluentValidation
+﻿using FluentValidation.Results;
+
+namespace FluentValidation
 {
-    public interface ICustomValidator<TValidator> where TValidator : class
+    public interface ICustomValidator<TValidator> where TValidator : class, ICompositeValidator
     {
-        public TValidator Validator { get; }
-        private void InitValidator()
-        {
-        }
+        TValidator Validator { get; }
+        void InitValidator();
+        ValidationResult Validate();
+        ValidationResult ValidateAndThrow();
     }
 }

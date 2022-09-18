@@ -2,7 +2,7 @@
 
 namespace FluentValidation
 {
-    public abstract class CompositeValidator<T> : AbstractValidator<T> where T : class
+    public abstract class CompositeValidator<T> : AbstractValidator<T>, ICompositeValidator
     {
         private List<IValidator> otherValidators = new List<IValidator>();
         private T Instance;

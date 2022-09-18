@@ -16,21 +16,21 @@ namespace FluentValidation.Test
         public void RequestValidatorTest()
         {
             Request request = new(1, "HelloWorld"); //valid
-            var result = request.Validator.Validate();
+            var result = request.Validate();
             result.IsValid.Should().BeTrue();
 
             request = new(1, ""); //invalid
-            result = request.Validator.Validate();
+            result = request.Validate();
             result.IsValid.Should().BeFalse();
 
             request = new(2, "HelloWorld"); //invalid
-            result = request.Validator.Validate();
+            result = request.Validate();
             result.IsValid.Should().BeFalse();
 
             var exceptionThrown = false;
             try
             {
-                request.Validator.ValidateAndThrow();
+                request.ValidateAndThrow();
             }
             catch (Exception)
             {
