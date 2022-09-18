@@ -15,15 +15,15 @@ namespace FluentValidation.Test
         [Test]
         public void RequestValidatorTest()
         {
-            var request = new Request(1, "HelloWorld"); //valid
+            Request request = new(1, "HelloWorld"); //valid
             var result = request.Validator.Validate();
             result.IsValid.Should().BeTrue();
 
-            request = new Request(1, ""); //invalid
+            request = new(1, ""); //invalid
             result = request.Validator.Validate();
             result.IsValid.Should().BeFalse();
 
-            request = new Request(2, "HelloWorld"); //invalid
+            request = new(2, "HelloWorld"); //invalid
             result = request.Validator.Validate();
             result.IsValid.Should().BeFalse();
 
@@ -32,7 +32,7 @@ namespace FluentValidation.Test
             {
                 request.Validator.ValidateAndThrow();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 exceptionThrown = true;
             }
