@@ -6,18 +6,19 @@ namespace FluentValidation
     {
 
         public int Id { get; set; }
-
-        public RequestValidator Validator { get; private set; }
         public string Value { get; set; }
+        public RequestValidator Validator { get; private set; }
 
         public Request()
         {
+            InitValidator();
         }
 
         public Request(int id, string value)
         {
             Id = id;
             Value = value;
+            InitValidator();
         }
 
         public void InitValidator()
