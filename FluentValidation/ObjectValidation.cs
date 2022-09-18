@@ -4,7 +4,7 @@ namespace FluentValidation
 {
     public abstract class ObjectValidation<TValidator> : ICompositeValidator where TValidator : class, ICompositeValidator
     {
-        private TValidator _validator;
+        private readonly TValidator _validator;
 
         public ObjectValidation()
         {

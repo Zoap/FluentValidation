@@ -4,12 +4,13 @@ namespace FluentValidation
 {
     public abstract class CompositeValidator<TClass> : AbstractValidator<TClass>, ICompositeValidator where TClass : class
     {
-        private List<IValidator> otherValidators = new List<IValidator>();
-        private TClass Instance;
+        private readonly List<IValidator> _otherValidators;
+        private readonly ValidationContext<TClass> _context;
 
         public CompositeValidator(TClass instance)
         {
-            Instance = instance;
+            _context = new(instance);
+            _otherValidators = new();
         }
 
         protected void RegisterBaseValidator<TValidator>(IValidator<TValidator> validator)
@@ -17,7 +18,7 @@ namespace FluentValidation
             // Ensure that we've registered a compatible validator. 
             if (validator.CanValidateInstancesOfType(typeof(TClass)))
             {
-                otherValidators.Add(validator);
+                _otherValidators.Add(validator);
             }
             else
             {
@@ -26,12 +27,10 @@ namespace FluentValidation
 
         }
 
-
         public ValidationResult Validate()
         {
-            ValidationContext<TClass> context = new ValidationContext<TClass>(Instance);
-            var mainErrors = base.Validate(context).Errors;
-            var errorsFromOtherValidators = otherValidators.SelectMany(x => x.Validate(context).Errors);
+            var mainErrors = base.Validate(_context).Errors;
+            var errorsFromOtherValidators = _otherValidators.SelectMany(x => x.Validate(_context).Errors);
             var combinedErrors = mainErrors.Concat(errorsFromOtherValidators);
 
             return new ValidationResult(combinedErrors);
@@ -39,17 +38,14 @@ namespace FluentValidation
 
         public ValidationResult ValidateAndThrow()
         {
-            ValidationContext<TClass> context = new ValidationContext<TClass>(Instance);
-            var mainErrors = base.Validate(context).Errors;
-            var errorsFromOtherValidators = otherValidators.SelectMany(x => x.Validate(context).Errors);
-            var combinedErrors = mainErrors.Concat(errorsFromOtherValidators);
+            var result = Validate();
 
-            if (combinedErrors.Count() > 0)
+            if (result.Errors.Count() > 0)
             {
-                throw new Exception(string.Join('\n', combinedErrors.Select(x => x.ErrorMessage).Distinct().ToList()));
+                throw new Exception(string.Join('\n', result.Errors.Select(x => x.ErrorMessage).Distinct().ToList()));
             }
 
-            return new ValidationResult(combinedErrors);
+            return result;
         }
     }
 }
