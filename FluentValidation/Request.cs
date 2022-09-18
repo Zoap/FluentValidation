@@ -12,13 +12,4 @@
             Value = value;
         }
     }
-
-    public class RequestValidator : CompositeValidator<Request>
-    {
-        public RequestValidator(Request instance) : base(instance)
-        {
-            RegisterBaseValidator(new IdValidator());
-            RegisterBaseValidator(new ValueValidator());
-        }
-    }
 }
