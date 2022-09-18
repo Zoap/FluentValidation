@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32421.90
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FluentValidation.Logik", "FluentValidation\FluentValidation.Logik.csproj", "{B4F9E6B0-0731-4681-99DE-AC43AC6148F2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FluentValidation.Test", "FluentValidation.Test\FluentValidation.Test.csproj", "{ECE5706A-7C7A-4A3D-ACEF-26E98C56AC47}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B4F9E6B0-0731-4681-99DE-AC43AC6148F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B4F9E6B0-0731-4681-99DE-AC43AC6148F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B4F9E6B0-0731-4681-99DE-AC43AC6148F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B4F9E6B0-0731-4681-99DE-AC43AC6148F2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ECE5706A-7C7A-4A3D-ACEF-26E98C56AC47}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ECE5706A-7C7A-4A3D-ACEF-26E98C56AC47}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ECE5706A-7C7A-4A3D-ACEF-26E98C56AC47}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ECE5706A-7C7A-4A3D-ACEF-26E98C56AC47}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FCBD35C3-AFE4-4703-B016-672622EC1C9C}
+	EndGlobalSection
+EndGlobal
